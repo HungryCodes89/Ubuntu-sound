@@ -480,7 +480,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   </div>
   <div class="wordmark">UBUNTU <em>SOUND</em></div>
   <div class="tagline">Sound Atelier · Bali</div>
-  <div class="line">Tuning the room.</div>
+  <div class="line" id="introLine">Tuning the room.</div>
 </div>
 <script>
 (function(){
@@ -496,6 +496,12 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   if(force){ d.classList.add("cine-force"); }
   if(reduce && !force){ d.classList.add("cine-rm"); }
   /* intro plays on every load by owner preference — no session skip */
+  /* rotate the soundcheck line so repeat visits stay alive */
+  try{
+    var lines=["Tuning the room.","Running soundcheck.","Setting the levels.","Aligning the subwoofers.","Raising the horns.","Waiting for sunset."];
+    var el=document.getElementById("introLine");
+    if(el) el.textContent=lines[Math.floor(Math.random()*lines.length)];
+  }catch(e){}
   /* if the tab opens in the background, hold the ceremony until it's actually watched */
   if(document.hidden && !d.classList.contains("cine-skip")){ d.classList.add("cine-wait"); }
 })();
@@ -812,7 +818,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   <footer>
     <span class="fm">UBUNTU <em>SOUND</em></span>
     Sound atelier · Bali, Indonesia<br>
-    Void Acoustics · Pioneer DJ · V.18 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
+    Void Acoustics · Pioneer DJ · V.19 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
   </footer>
 </main>
 
