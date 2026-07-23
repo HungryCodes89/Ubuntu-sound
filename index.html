@@ -308,7 +308,8 @@ section{padding:5.5rem 8vw;position:relative;scroll-margin-top:var(--nav-h)}
 
 /* ---------- FIELD RECORDING ---------- */
 .field-rec{border:1px solid var(--line);padding:.6rem;max-width:900px;margin:0 auto}
-.field-rec video{display:block;width:100%;height:auto;background:#000}
+.field-rec .yt-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.field-rec .yt-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .field-caption{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;max-width:900px;margin:1rem auto 0;
   font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-dim)}
 .field-caption a{color:var(--gold);text-decoration:none}
@@ -761,10 +762,12 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
         <p class="lead">Birds of Paradise — a Bali celebration built on deep, soulful and Afro-house sound.</p>
       </div>
       <div class="field-rec reveal">
-        <video id="fieldVideo" muted loop playsinline preload="metadata"
-          poster="https://cdn.prod.website-files.com/64958d5d414cdc94f6df791f/64d8a5441a596721ff616468_Video%20(1)-poster-00001.jpg">
-          <source src="https://cdn.prod.website-files.com/64958d5d414cdc94f6df791f/64d8a5441a596721ff616468_Video%20(1)-transcode.mp4" type="video/mp4">
-        </video>
+        <div class="yt-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/ph5InsgiU94?rel=0&modestbranding=1"
+            title="Birds of Paradise — event film"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
       </div>
       <div class="field-caption reveal">
         <span>REC.01 · Birds of Paradise · Bali</span>
@@ -817,7 +820,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   <footer>
     <span class="fm">UBUNTU <em>SOUND</em></span>
     Sound atelier · Bali, Indonesia<br>
-    Void Acoustics · Pioneer DJ · V.12 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
+    Void Acoustics · Pioneer DJ · V.13 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
   </footer>
 </main>
 
@@ -1390,33 +1393,6 @@ FIELD_IDS.forEach(function(id){
     el.addEventListener("change", saveState);
   }
 });
-
-/* ---------- field recording: play only while on screen ---------- */
-(function(){
-  var v=document.getElementById("fieldVideo");
-  if(!v) return;
-  function tryPlay(){
-    v.muted=true; /* belt and suspenders for iOS */
-    var pr=v.play();
-    if(pr&&pr.catch) pr.catch(function(){ v.setAttribute("controls",""); });
-  }
-  /* tap anywhere on the frame starts it, regardless of autoplay policy */
-  v.parentNode.addEventListener("click", function(){
-    if(v.paused){ tryPlay(); } else { v.pause(); }
-  });
-  if(reduceMotion){ v.setAttribute("controls",""); return; }
-  if("IntersectionObserver" in window){
-    var vio=new IntersectionObserver(function(es){
-      es.forEach(function(en){
-        if(en.isIntersecting){ tryPlay(); }
-        else{ v.pause(); }
-      });
-    },{threshold:.35});
-    vio.observe(v);
-  }else{
-    v.setAttribute("controls","");
-  }
-})();
 
 /* ---------- reliable in-page anchors (iOS Safari) ---------- */
 document.addEventListener("click", function(e){
