@@ -505,7 +505,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   d.classList.add("cine");
   if(force){ d.classList.add("cine-force"); }
   if(reduce && !force){ d.classList.add("cine-rm"); }
-  if(seen && !embedded && !force){ d.classList.add("cine-skip","cine-done"); }
+  /* intro plays on every load by owner preference — no session skip */
   /* if the tab opens in the background, hold the ceremony until it's actually watched */
   if(document.hidden && !d.classList.contains("cine-skip")){ d.classList.add("cine-wait"); }
 })();
@@ -831,7 +831,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   <footer>
     <span class="fm">UBUNTU <em>SOUND</em></span>
     Sound atelier · Bali, Indonesia<br>
-    Void Acoustics · Pioneer DJ · V.15 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
+    Void Acoustics · Pioneer DJ · V.16 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
   </footer>
 </main>
 
