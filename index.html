@@ -85,14 +85,6 @@ html.cine-skip #intro{display:none}
   opacity:0;animation:softin 1.6s ease 4.7s forwards;
 }
 @keyframes softin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-#intro .skip{
-  position:absolute;bottom:calc(1.6rem + var(--safe-b));left:50%;transform:translateX(-50%);
-  background:none;border:none;cursor:pointer;
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;text-indent:0;text-transform:uppercase;
-  color:rgba(245,240,227,.34);padding:.8rem 1.2rem;min-height:44px;
-  opacity:0;animation:softin 1.2s ease 2.2s forwards;transition:color .3s;
-}
-#intro .skip:hover{color:var(--gold)}
 
 /* scene develops after arrival */
 html.cine .sun,html.cine .sunglow,html.cine .godray{opacity:0}
@@ -448,7 +440,7 @@ footer a{color:var(--gold);text-decoration:none}
   .art path,.art circle,.art rect,.art line,.art ellipse{stroke-dashoffset:0 !important}
   /* static arrival: everything at its final state, brief hold, instant dissolve */
   #intro .tri{stroke-dashoffset:0 !important}
-  #intro .dot,#intro .wordmark,#intro .tagline,#intro .line,#intro .skip{opacity:1 !important;transform:none !important}
+  #intro .dot,#intro .wordmark,#intro .tagline,#intro .line{opacity:1 !important;transform:none !important}
   #intro .wordmark{letter-spacing:.16em !important}
   #intro .sheen{display:none}
   html.cine .sun,html.cine .sunglow,html.cine .godray,html.cine .stars,html.cine .fireflies,html.cine .sea-shine,html.cine .isle,html.cine .topnav{opacity:1 !important}
@@ -463,7 +455,6 @@ html.cine-force #intro .sheen{display:block !important;animation:sheensweep 1.6s
 html.cine-force #intro .wordmark{animation:wordin 1.8s cubic-bezier(.25,.1,.2,1) 3.1s forwards !important}
 html.cine-force #intro .tagline{animation:softin 1.4s ease 3.9s forwards !important}
 html.cine-force #intro .line{animation:softin 1.6s ease 4.7s forwards !important}
-html.cine-force #intro .skip{animation:softin 1.2s ease 2.2s forwards !important}
 html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !important;transition:opacity 1.6s cubic-bezier(.4,.0,.2,1),visibility 0s 1.6s !important}
 .btn:focus-visible,.piece:focus-visible,.menu-row:focus-visible,.clear-sys:focus-visible,a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
 </style>
@@ -490,7 +481,6 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   <div class="wordmark">UBUNTU <em>SOUND</em></div>
   <div class="tagline">Sound Atelier · Bali</div>
   <div class="line">Tuning the room.</div>
-  <button type="button" class="skip" id="skipIntro">Enter</button>
 </div>
 <script>
 (function(){
@@ -822,7 +812,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   <footer>
     <span class="fm">UBUNTU <em>SOUND</em></span>
     Sound atelier · Bali, Indonesia<br>
-    Void Acoustics · Pioneer DJ · V.17 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
+    Void Acoustics · Pioneer DJ · V.18 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
   </footer>
 </main>
 
@@ -928,13 +918,10 @@ function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null;
     begin();
   }
   function skip(){ if(t!==null) clearTimeout(t); finish(); }
-  var skipBtn=document.getElementById("skipIntro");
-  skipBtn.addEventListener("click", skip);
-  intro.addEventListener("click", function(e){ if(e.target===intro) skip(); });
+  intro.addEventListener("click", skip);
   document.addEventListener("keydown", function h(e){
     if(finished){ document.removeEventListener("keydown",h); return; }
-    if(e.key==="Escape"||e.key==="Enter"){ skip(); return; }
-    if(e.key===" " && document.activeElement===skipBtn){ e.preventDefault(); skip(); }
+    if(e.key==="Escape"||e.key==="Enter"){ skip(); }
   });
 })();
 
