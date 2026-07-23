@@ -863,13 +863,14 @@ function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null;
     doc.classList.remove("cine-wait");
     t=setTimeout(finish, hold);
   }
-  if(doc.classList.contains("cine-wait")){
+  if(doc.classList.contains("cine-wait") && document.hidden){
     document.addEventListener("visibilitychange", function v(){
       if(!document.hidden){ document.removeEventListener("visibilitychange",v); begin(); }
     });
     /* safety: never wait forever */
-    setTimeout(begin, 30000);
+    setTimeout(begin, 15000);
   }else{
+    /* visible now (or became visible while loading) — start immediately */
     begin();
   }
   function skip(){ if(t!==null) clearTimeout(t); finish(); }
