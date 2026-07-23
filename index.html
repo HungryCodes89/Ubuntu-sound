@@ -308,6 +308,7 @@ section{padding:5.5rem 8vw;position:relative;scroll-margin-top:var(--nav-h)}
 
 /* ---------- FIELD RECORDING ---------- */
 .field-rec{border:1px solid var(--line);padding:.6rem;max-width:900px;margin:0 auto}
+.field-rec video{display:block;width:100%;height:auto;background:#000;cursor:pointer}
 .field-rec .yt-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
 .field-rec .yt-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .field-caption{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;max-width:900px;margin:1rem auto 0;
@@ -770,8 +771,18 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
         </div>
       </div>
       <div class="field-caption reveal">
-        <span>REC.01 · Birds of Paradise · Bali</span>
+        <span>REC.01 · Birds of Paradise · Bali · Event film</span>
         <span>Sound &amp; direction · Rob Rizk</span>
+      </div>
+      <div class="field-rec reveal" style="margin-top:2rem">
+        <video id="fieldClip" muted loop playsinline preload="metadata"
+          poster="https://cdn.prod.website-files.com/64958d5d414cdc94f6df791f/64d8a528399cb463ebbd2a4c_Video_1%20(1)-poster-00001.jpg">
+          <source src="https://cdn.prod.website-files.com/64958d5d414cdc94f6df791f/64d8a528399cb463ebbd2a4c_Video_1%20(1)-transcode.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="field-caption reveal">
+        <span>REC.02 · Birds of Paradise · Bali</span>
+        <span>Tap to play</span>
       </div>
     </div>
   </section>
@@ -820,7 +831,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   <footer>
     <span class="fm">UBUNTU <em>SOUND</em></span>
     Sound atelier · Bali, Indonesia<br>
-    Void Acoustics · Pioneer DJ · V.13 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
+    Void Acoustics · Pioneer DJ · V.14 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
   </footer>
 </main>
 
@@ -887,6 +898,12 @@ function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null;
 (function(){
   var doc=document.documentElement;
   var intro=document.getElementById("intro");
+  /* stale #section hashes make reloads jump mid-page — always arrive at the top */
+  try{
+    if("scrollRestoration" in history) history.scrollRestoration="manual";
+    if(location.hash) history.replaceState(null,"",location.pathname+location.search);
+    window.scrollTo(0,0);
+  }catch(e){}
   if(doc.classList.contains("cine-skip")||doc.classList.contains("cine-done")){
     sset("us-intro","1");
     if(intro&&intro.parentNode) intro.parentNode.removeChild(intro);
@@ -1393,6 +1410,27 @@ FIELD_IDS.forEach(function(id){
     el.addEventListener("change", saveState);
   }
 });
+
+/* ---------- REC.02 clip: visibility autoplay + tap toggle ---------- */
+(function(){
+  var v=document.getElementById("fieldClip");
+  if(!v) return;
+  function tryPlay(){
+    v.muted=true;
+    var pr=v.play();
+    if(pr&&pr.catch) pr.catch(function(){ v.setAttribute("controls",""); });
+  }
+  v.addEventListener("click", function(){ if(v.paused){ tryPlay(); } else { v.pause(); } });
+  if(reduceMotion){ v.setAttribute("controls",""); return; }
+  if("IntersectionObserver" in window){
+    var vio=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ tryPlay(); } else { v.pause(); } });
+    },{threshold:.35});
+    vio.observe(v);
+  }else{
+    v.setAttribute("controls","");
+  }
+})();
 
 /* ---------- reliable in-page anchors (iOS Safari) ---------- */
 document.addEventListener("click", function(e){
