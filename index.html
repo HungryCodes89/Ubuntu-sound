@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="UBUNTU SOUND — premium sound-system rental and event production in Bali. Void Acoustics and Pioneer DJ equipment, delivered, tuned and attended by engineers.">
+<title>UBUNTU SOUND — Sound-System Rental &amp; Event Production · Bali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#050908;
+  --deep:#08110D;
+  --line:rgba(214,182,122,.22);
+  --line-hi:rgba(214,182,122,.6);
+  --gold:#D6B67A;
+  --gold-hi:#F0DCAE;
+  --gold-dim:#A08A55;
+  --ivory:#F5F0E3;
+  --mist:#B5C2B6;
+  --serif:'Libre Franklin',sans-serif;
+  --sans:'Libre Franklin',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --nav-h:84px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--ivory);
+  font-family:var(--sans);
+  font-weight:300;
+  letter-spacing:.005em;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.locked{overflow:hidden}
+::selection{background:var(--gold);color:var(--black)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============ CINEMATIC ARRIVAL ============ */
+#intro{
+  position:fixed;inset:0;z-index:200;
+  background:#030605;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:2.2rem;text-align:center;padding:2rem;
+}
+html.cine-done #intro{opacity:0;visibility:hidden;transition:opacity 1.6s cubic-bezier(.4,.0,.2,1),visibility 0s 1.6s}
+html.cine-skip #intro{display:none}
+#intro .markwrap{position:relative;width:min(150px,34vw)}
+#intro .mono{width:100%;height:auto;display:block;overflow:visible}
+#intro .mono .tri{
+  fill:none;stroke:var(--gold);stroke-width:1.2;
+  stroke-dasharray:100;stroke-dashoffset:100;
+  animation:introdraw 2.2s cubic-bezier(.55,.06,.28,.99) .5s forwards;
+}
+@keyframes introdraw{to{stroke-dashoffset:0}}
+#intro .mono .dot{fill:var(--gold);opacity:0;animation:dotlight 1s cubic-bezier(.4,.0,.2,1) forwards}
+@keyframes dotlight{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:blur(0)}}
+#intro .sheen{
+  position:absolute;inset:-20%;pointer-events:none;
+  background:linear-gradient(105deg,transparent 42%,rgba(240,220,174,.5) 50%,transparent 58%);
+  mix-blend-mode:screen;transform:translateX(-130%);
+  animation:sheensweep 1.6s cubic-bezier(.55,.06,.28,.99) 2.9s forwards;
+}
+@keyframes sheensweep{to{transform:translateX(130%)}}
+#intro .wordmark{
+  font-family:var(--serif);font-weight:700;text-transform:uppercase;
+  font-size:clamp(1rem,3.6vw,1.3rem);color:var(--ivory);
+  letter-spacing:.5em;text-indent:.5em;opacity:0;
+  animation:wordin 1.8s cubic-bezier(.25,.1,.2,1) 3.1s forwards;
+}
+#intro .wordmark em{font-family:var(--mono);font-style:normal;font-weight:400;color:var(--gold)}
+@keyframes wordin{from{opacity:0;letter-spacing:.5em}to{opacity:1;letter-spacing:.16em}}
+#intro .tagline{
+  font-family:var(--mono);font-weight:400;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:.08em;text-indent:.08em;color:var(--gold-dim);
+  opacity:0;animation:softin 1.4s ease 3.9s forwards;margin-top:-1.4rem;
+}
+#intro .line{
+  font-family:var(--mono);font-style:normal;font-weight:400;
+  font-size:clamp(.85rem,3vw,1rem);color:var(--gold-hi);
+  opacity:0;animation:softin 1.6s ease 4.7s forwards;
+}
+@keyframes softin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#intro .skip{
+  position:absolute;bottom:calc(1.6rem + var(--safe-b));left:50%;transform:translateX(-50%);
+  background:none;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;text-indent:0;text-transform:uppercase;
+  color:rgba(245,240,227,.34);padding:.8rem 1.2rem;min-height:44px;
+  opacity:0;animation:softin 1.2s ease 2.2s forwards;transition:color .3s;
+}
+#intro .skip:hover{color:var(--gold)}
+
+/* scene develops after arrival */
+html.cine .sun,html.cine .sunglow,html.cine .godray{opacity:0}
+html.cine-done .sun{opacity:1;transition:opacity 2.6s cubic-bezier(.25,.1,.2,1) .3s}
+html.cine-done .sunglow{opacity:1;transition:opacity 3.2s cubic-bezier(.25,.1,.2,1) .5s}
+html.cine-done .godray{opacity:1;transition:opacity 3.6s cubic-bezier(.25,.1,.2,1) .9s}
+html.cine .stars,html.cine .fireflies,html.cine .sea-shine,html.cine .isle{opacity:0}
+html.cine-done .stars,html.cine-done .isle{opacity:1;transition:opacity 2.4s ease 1.2s}
+html.cine-done .sea-shine{opacity:.6;transition:opacity 2.8s ease 1.6s}
+html.cine-done .fireflies{opacity:1;transition:opacity 3s ease 2.2s}
+html.cine .hero .est,html.cine .hero h1,html.cine .hero .what,html.cine .hero .sub,html.cine .hero .actions,html.cine .hero .scroll{opacity:0;transform:translateY(16px)}
+html.cine-done .hero .est{opacity:1;transform:none;transition:opacity 1.2s cubic-bezier(.25,.1,.2,1) .5s,transform 1.2s cubic-bezier(.25,.1,.2,1) .5s}
+html.cine-done .hero h1{opacity:1;transform:none;transition:opacity 1.4s cubic-bezier(.25,.1,.2,1) .75s,transform 1.4s cubic-bezier(.25,.1,.2,1) .75s}
+html.cine-done .hero .what{opacity:1;transform:none;transition:opacity 1.2s cubic-bezier(.25,.1,.2,1) 1.15s,transform 1.2s cubic-bezier(.25,.1,.2,1) 1.15s}
+html.cine-done .hero .sub{opacity:1;transform:none;transition:opacity 1.2s cubic-bezier(.25,.1,.2,1) 1.4s,transform 1.2s cubic-bezier(.25,.1,.2,1) 1.4s}
+html.cine-done .hero .actions{opacity:1;transform:none;transition:opacity 1.2s cubic-bezier(.25,.1,.2,1) 1.85s,transform 1.2s cubic-bezier(.25,.1,.2,1) 1.85s}
+html.cine-done .hero .scroll{opacity:1;transform:none;transition:opacity 1.4s cubic-bezier(.25,.1,.2,1) 2.4s,transform 1.4s cubic-bezier(.25,.1,.2,1) 2.4s}
+html.cine .topnav{opacity:0}
+html.cine-done .topnav{opacity:1;transition:opacity 1.4s ease 2s}
+/* same-session skip: everything visible instantly */
+html.cine-skip .sun,html.cine-skip .sunglow,html.cine-skip .godray,html.cine-skip .stars,html.cine-skip .fireflies,html.cine-skip .isle,html.cine-skip .topnav{opacity:1}
+html.cine-skip .sea-shine{opacity:.6}
+html.cine-skip .hero .est,html.cine-skip .hero h1,html.cine-skip .hero .what,html.cine-skip .hero .sub,html.cine-skip .hero .actions,html.cine-skip .hero .scroll{opacity:1;transform:none}
+
+/* ============ SCENE ============ */
+.scene{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sky{position:absolute;inset:0;background:linear-gradient(180deg,
+  #120b26 0%, #2c1440 16%, #5b2249 32%, #93384a 46%, #c65f3a 58%,
+  #e89a4e 68%, #f4c26a 74%, #f7d98f 78%,
+  #29565c 78.4%, #143b41 86%, #0a2027 94%, #061412 100%)}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#f7e9c8;animation:twinkle 5s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.55}}
+.sun{position:absolute;left:50%;top:71%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,#fff3cf 0%,#ffd98a 34%,#f7b45e 62%,rgba(247,180,94,0) 72%)}
+.sunglow{position:absolute;left:50%;top:71%;transform:translate(-50%,-50%);width:900px;height:600px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,205,120,.5) 0%,rgba(240,150,80,.22) 38%,transparent 68%);mix-blend-mode:screen}
+.godray{position:absolute;left:50%;top:0;height:78%;width:340px;transform:translateX(-50%);
+  background:linear-gradient(180deg,transparent 0%,rgba(255,214,140,.10) 55%,rgba(255,214,140,.22) 100%);
+  clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);mix-blend-mode:screen}
+.sea-shine{position:absolute;left:0;right:0;top:78%;height:12%;
+  background:repeating-linear-gradient(180deg,rgba(255,210,130,.3) 0 1.5px,transparent 1.5px 7px);
+  -webkit-mask:radial-gradient(60% 100% at 50% 0%,#000 30%,transparent 100%);
+          mask:radial-gradient(60% 100% at 50% 0%,#000 30%,transparent 100%);
+  mix-blend-mode:screen;opacity:.6}
+.isle{position:absolute;left:6%;top:76.2%;width:220px;height:34px;
+  background:radial-gradient(60% 100% at 50% 100%,#241522 0%,#31182a 70%,transparent 100%);
+  border-radius:50% 50% 0 0/100% 100% 0 0;opacity:.9}
+.silh{position:absolute;bottom:-2vh;width:58vw;max-width:740px;will-change:transform}
+.silh.l{left:-10vw}
+.silh.r{right:-10vw;transform:scaleX(-1)}
+.silh svg{width:100%;height:auto;display:block}
+.silh path{fill:#04120c}
+.silh .mid{fill:#082018;opacity:.9}
+.fireflies i{position:absolute;width:4px;height:4px;border-radius:50%;
+  background:radial-gradient(circle,#ffe9a8 0%,rgba(255,222,140,.6) 40%,transparent 75%);
+  animation:drift var(--d,11s) ease-in-out infinite alternate, glowp 4.5s ease-in-out infinite}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(var(--dx,30px),var(--dy,-46px))}}
+@keyframes glowp{0%,100%{opacity:.08}50%{opacity:.65}}
+.dusk{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 50% 30%,rgba(4,10,8,.25) 0%,rgba(4,10,8,.72) 78%),
+  linear-gradient(180deg,rgba(4,10,8,.25),rgba(4,10,8,.65));
+  opacity:var(--dusk,0)}
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ============ VINES ============ */
+.vinecol{position:fixed;top:0;bottom:0;width:190px;z-index:3;pointer-events:none;opacity:.88}
+.vinecol.l{left:0}.vinecol.r{right:0}
+.vinecol svg{width:100%;height:100%;overflow:visible}
+.vstem{fill:none;stroke:url(#stemGrad);stroke-linecap:round}
+.vstem.core{stroke-width:4.5}
+.vstem.hi{stroke:rgba(148,205,160,.5);stroke-width:1.4}
+.vtendril{fill:none;stroke:#4C7E5D;stroke-width:1.2;stroke-linecap:round}
+.vleaf{opacity:0}
+.vleaf .unfurl{transform:scale(.05) rotate(-60deg);transform-origin:0 0;
+  transition:transform 1.7s cubic-bezier(.22,.8,.3,1.05),opacity .8s}
+.vleaf.open{opacity:1}
+.vleaf.open .unfurl{transform:scale(1) rotate(0deg)}
+.vleaf.sw.open .sway{animation:sway 12s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-.8deg)}50%{transform:rotate(.8deg)}}
+
+/* ============ SHARED ============ */
+.caps{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;font-weight:400;color:var(--gold)}
+.caps.dim{color:var(--mist)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:.68rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;text-indent:0;
+  padding:1.1rem 2.4rem;min-height:48px;
+  border:1px solid var(--line-hi);
+  background:rgba(5,9,8,.4);color:var(--ivory);
+  cursor:pointer;text-decoration:none;
+  transition:background .4s,color .4s,border-color .4s;
+}
+.btn:hover{border-color:var(--gold-hi);background:rgba(214,182,122,.12)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--black);font-weight:500}
+.btn.gold:hover{background:var(--gold-hi);border-color:var(--gold-hi)}
+.btn.util{font-family:var(--mono);font-weight:400;letter-spacing:.04em}
+button{font:inherit;color:inherit}
+
+/* ============ NAV ============ */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 5vw;background:linear-gradient(180deg,rgba(5,9,8,.78),transparent)}
+.monogram{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--ivory)}
+.monogram svg{width:28px;height:28px}
+.wordlock{display:inline-flex;align-items:baseline;gap:.5em;white-space:nowrap}
+.wordlock .wm-a{font-family:var(--serif);font-weight:700;letter-spacing:.12em;font-size:.82rem}
+.wordlock .wm-b{font-family:var(--mono);font-weight:400;letter-spacing:.1em;font-size:.72rem;color:var(--gold)}
+.navlinks{display:flex;gap:2rem}
+.navlinks a{font-family:var(--serif);font-weight:500;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ivory);opacity:.8;text-decoration:none;padding:.6rem 0;transition:opacity .3s}
+.navlinks a:hover{opacity:1}
+@media (max-width:640px){.navlinks a:not(.always){display:none}}
+
+/* ============ CONTENT ============ */
+main{position:relative;z-index:2}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 8vw 6rem;scroll-margin-top:var(--nav-h)}
+.hero .est{margin-bottom:2.2rem;display:flex;align-items:center;gap:1.4rem}
+.hero .est::before,.hero .est::after{content:"";width:52px;height:1px;background:var(--line-hi)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.3rem,7.6vw,6.2rem);line-height:1.04;letter-spacing:-.025em;text-transform:uppercase;max-width:16ch;
+  text-shadow:0 2px 30px rgba(5,9,8,.85),0 1px 8px rgba(5,9,8,.9)}
+.hero h1 .it{display:block;font-family:var(--mono);font-weight:400;font-style:normal;text-transform:lowercase;letter-spacing:.02em;font-size:.52em;margin-top:.32em;color:var(--gold-hi)}
+.hero .what{margin-top:1.8rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold-hi);text-shadow:0 1px 10px rgba(5,9,8,.95)}
+.hero .sub{margin-top:1.6rem;max-width:56ch;font-size:1rem;font-weight:300;letter-spacing:.04em;
+  color:var(--ivory);line-height:2;text-shadow:0 1px 14px rgba(5,9,8,.95)}
+.hero .actions{margin-top:3rem;display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center}
+.hero .scroll{position:absolute;bottom:calc(2rem + var(--safe-b));left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.hero .scroll::after{content:"";width:1px;height:46px;background:linear-gradient(180deg,var(--gold-hi),transparent)}
+
+section{padding:5.5rem 8vw;position:relative;scroll-margin-top:var(--nav-h)}
+.panel{background:rgba(5,12,9,.82);border:1px solid var(--line);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:4rem clamp(1.4rem,4vw,4rem);max-width:1150px;margin:0 auto}
+.sec-intro{text-align:center;margin-bottom:3.6rem}
+.sec-intro .caps{display:block;margin-bottom:1.4rem}
+.sec-intro h2{font-family:var(--serif);font-weight:700;font-style:normal;text-transform:uppercase;letter-spacing:-.015em;font-size:clamp(1.7rem,4.4vw,2.8rem)}
+.sec-intro .lead{margin:1.4rem auto 0;max-width:58ch;color:var(--mist);font-size:.94rem;line-height:1.9;letter-spacing:.03em}
+
+/* ---------- SYSTEMS ---------- */
+.piece{position:relative;display:grid;grid-template-columns:74px 1fr auto;gap:2rem;align-items:start;
+  width:100%;text-align:left;padding:2.8rem 1.6rem;background:none;border:none;
+  border-top:1px solid var(--line);cursor:pointer;transition:background .5s;color:var(--ivory)}
+.piece:last-of-type{border-bottom:1px solid var(--line)}
+.piece:hover{background:linear-gradient(90deg,rgba(214,182,122,.06),transparent 70%)}
+.piece .numeral{font-family:var(--mono);font-style:normal;font-size:.95rem;font-weight:400;color:var(--gold-dim);line-height:1;padding-top:.5rem;letter-spacing:.06em;transition:color .4s}
+.piece:hover .numeral,.piece[aria-checked="true"] .numeral{color:var(--gold-hi)}
+.piece h3{font-family:var(--serif);font-weight:600;font-size:1.7rem;line-height:1.15;letter-spacing:-.018em;margin-bottom:.45rem}
+.piece .desc{color:var(--mist);font-weight:300;font-size:.93rem;letter-spacing:.03em;line-height:1.8;max-width:52ch;margin-bottom:1.1rem}
+.piece .manifest{display:flex;flex-wrap:wrap;gap:.45rem 1.6rem;font-size:.8rem;letter-spacing:.05em;color:#DAD4C1}
+.piece .manifest span{display:flex;align-items:baseline;gap:.5rem}
+.piece .manifest span::before{content:"·";color:var(--gold-dim)}
+.piece .fit{margin-top:.9rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-dim)}
+.piece .right{display:flex;flex-direction:column;align-items:flex-end;gap:1.2rem;min-width:170px}
+.piece .price{font-family:var(--serif);font-weight:700;font-variation-settings:normal;font-feature-settings:"tnum";font-size:2.1rem;letter-spacing:-.02em;line-height:1;white-space:nowrap;text-align:right}
+.piece .price small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mist);margin-top:.55rem;font-weight:400}
+.piece .price .full{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--gold-dim);margin-top:.4rem;text-transform:none}
+.select-mark{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;text-indent:0;
+  padding:.75rem 1.3rem;min-height:44px;display:flex;align-items:center;
+  border:1px solid var(--line);color:var(--mist);transition:all .4s;white-space:nowrap}
+.piece:hover .select-mark{border-color:var(--line-hi);color:var(--ivory)}
+.piece[aria-checked="true"] .select-mark{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.piece .flag{position:absolute;top:0;left:1.6rem;transform:translateY(-50%);
+  background:#050C09;padding:.35rem 1rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--line-hi)}
+.clear-row{display:flex;justify-content:flex-end;margin-top:1.2rem;min-height:44px}
+.clear-sys{background:none;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:.62rem;font-weight:400;letter-spacing:.05em;text-indent:0;text-transform:uppercase;
+  color:var(--gold-dim);padding:.8rem 1rem;min-height:44px;display:none;transition:color .3s}
+.clear-sys.show{display:inline-flex;align-items:center}
+.clear-sys:hover{color:var(--gold-hi)}
+.engraving{grid-column:1 / -1;max-height:0;overflow:hidden;transition:max-height .7s cubic-bezier(.2,.8,.2,1),margin .7s;display:flex;justify-content:center}
+.piece[aria-checked="true"] .engraving,.menu-row[aria-pressed="true"] .engraving{max-height:280px;margin-top:1.4rem}
+.engraving svg{width:min(380px,76vw);height:auto;overflow:visible}
+.art path,.art circle,.art rect,.art line,.art ellipse{fill:none;stroke:var(--gold);stroke-width:1.1;stroke-dasharray:900;stroke-dashoffset:900}
+.piece[aria-checked="true"] .art path,.piece[aria-checked="true"] .art circle,.piece[aria-checked="true"] .art rect,.piece[aria-checked="true"] .art line,.piece[aria-checked="true"] .art ellipse,
+.menu-row[aria-pressed="true"] .art path,.menu-row[aria-pressed="true"] .art circle,.menu-row[aria-pressed="true"] .art rect,.menu-row[aria-pressed="true"] .art line,.menu-row[aria-pressed="true"] .art ellipse{animation:inkdraw 2.2s ease forwards}
+@keyframes inkdraw{to{stroke-dashoffset:0}}
+.art .fillg{fill:rgba(214,182,122,.12);stroke:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:0;transition:opacity 1.2s .8s}
+.piece[aria-checked="true"] .art .fillg,.menu-row[aria-pressed="true"] .art .fillg{opacity:1}
+.art-caption{text-align:center;font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-dim);margin-top:.8rem}
+
+/* ---------- MENU ---------- */
+.menu{max-width:780px;margin:0 auto}
+.menu-row{display:block;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid rgba(214,182,122,.12);
+  cursor:pointer;transition:background .4s;padding:0 .6rem;color:var(--ivory)}
+.menu-row:hover{background:rgba(214,182,122,.05)}
+.menu-row .row-line{display:flex;align-items:baseline;gap:1.1rem;padding:1.35rem 0;min-height:48px}
+.menu-row .nm{font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:-.01em}
+.menu-row .kind{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-dim);white-space:nowrap}
+.menu-row .dots{flex:1;border-bottom:1px dotted rgba(214,182,122,.4);transform:translateY(-4px);min-width:20px}
+.menu-row .pr{font-family:var(--mono);font-weight:500;font-size:.95rem;letter-spacing:0;white-space:nowrap;color:var(--gold-hi)}
+.menu-row .mk{width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;font-size:.72rem;color:transparent;transition:all .3s;transform:translateY(5px)}
+.menu-row[aria-pressed="true"] .mk{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.menu-row[aria-pressed="true"] .nm{color:var(--gold-hi)}
+.menu-row .engraving{display:flex;flex-direction:column;align-items:center}
+.menu-row[aria-pressed="true"] .engraving{padding-bottom:1.6rem}
+.menu-row .engraving svg{width:min(290px,68vw)}
+
+/* ---------- SERVICE ---------- */
+.svc-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid var(--line)}
+.svc{padding:2.8rem 2.2rem;border-right:1px solid var(--line);text-align:center}
+.svc:last-child{border-right:none}
+.svc .glyph{font-family:var(--mono);font-style:normal;font-size:.8rem;letter-spacing:.06em;color:var(--gold);margin-bottom:1.2rem}
+.svc b{display:block;font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;margin-bottom:.7rem}
+.svc span{font-size:.84rem;font-weight:300;color:var(--mist);line-height:1.85;letter-spacing:.03em}
+.pricing-note{margin-top:2.4rem;border:1px solid var(--line);padding:1.8rem 2rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.pricing-note h4{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.7rem;color:var(--gold-hi)}
+.pricing-note ul{list-style:none;font-size:.84rem;color:var(--mist);line-height:2;letter-spacing:.03em}
+.pricing-note li::before{content:"— ";color:var(--gold-dim)}
+@media (max-width:640px){.pricing-note{grid-template-columns:1fr}}
+
+/* ---------- BOOKING ---------- */
+.booking-steps{max-width:640px;margin:0 auto;text-align:center}
+.booking-steps p{color:var(--mist);font-size:.94rem;line-height:2;letter-spacing:.03em}
+.booking-steps ul{list-style:none;margin:1.8rem 0;display:inline-block;text-align:left}
+.booking-steps li{font-size:.9rem;color:#DAD4C1;line-height:2.2;letter-spacing:.03em}
+.booking-steps li::before{content:"— ";color:var(--gold-dim)}
+.finale{text-align:center;margin-top:3.6rem;padding-top:3.2rem;border-top:1px solid var(--line)}
+.finale h3{font-family:var(--serif);font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:-.015em;font-size:clamp(1.4rem,3.8vw,2.1rem);margin-bottom:1rem}
+.finale p{color:var(--mist);font-size:.94rem;line-height:1.9;letter-spacing:.03em;max-width:46ch;margin:0 auto 2rem}
+.finale .row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+
+footer{position:relative;z-index:2;padding:4.5rem 8vw calc(4.5rem + var(--safe-b));text-align:center;color:var(--mist);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;line-height:2.4;transition:padding-bottom .4s ease}
+body.has-quote footer{padding-bottom:calc(10rem + var(--safe-b))}
+footer .fm{font-family:var(--serif);font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:1.1rem;color:var(--ivory);display:block;margin-bottom:.8rem}
+footer .fm em{font-family:var(--mono);font-style:normal;font-weight:400;color:var(--gold)}
+footer a{color:var(--gold);text-decoration:none}
+
+/* ---------- QUOTE BAR ---------- */
+.quotebar{position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:rgba(5,9,8,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-top:1px solid var(--line-hi);
+  padding:.9rem 5vw calc(.9rem + var(--safe-b));
+  display:flex;align-items:center;justify-content:space-between;gap:1.2rem;
+  transform:translateY(110%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.quotebar.on{transform:translateY(0)}
+.quotebar .amt{font-family:var(--mono);font-weight:500;font-size:1.35rem;letter-spacing:-.01em;color:var(--gold-hi);line-height:1}
+.quotebar .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:.3rem}
+.quotebar .ct{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;color:var(--mist)}
+.quotebar .btn .short{display:none}
+@media (max-width:520px){
+  .quotebar{padding:.65rem 4vw calc(.65rem + var(--safe-b));gap:.8rem}
+  .quotebar .amt{font-size:1.4rem}
+  .quotebar .lbl{margin-bottom:.2rem}
+  .quotebar .ct{font-size:.62rem;letter-spacing:.04em}
+  .quotebar .btn{padding:.9rem 1.4rem;min-height:44px}
+  .quotebar .btn .full{display:none}
+  .quotebar .btn .short{display:inline}
+}
+
+/* ---------- MODAL ---------- */
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:1.2rem;
+  background:rgba(3,6,5,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.sheet{width:min(620px,100%);max-height:calc(100dvh - 2.4rem);overflow:auto;background:var(--deep);
+  border:1px solid var(--line-hi);padding:2.8rem clamp(1.4rem,5vw,3rem);position:relative;
+  overscroll-behavior:contain;outline:none}
+.sheet::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);pointer-events:none}
+.sheet .caps{display:block;text-align:center;margin-bottom:.9rem}
+.sheet h3{font-family:var(--serif);font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:-.015em;font-size:1.5rem;text-align:center;margin-bottom:.8rem}
+.sheet .estnote{text-align:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:var(--gold-dim);margin-bottom:1.8rem}
+.sheet h4{font-family:var(--mono);font-size:.64rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);font-weight:500;margin:1.6rem 0 .7rem}
+.sheet table{width:100%;border-collapse:collapse;table-layout:fixed}
+.sheet td{padding:.7rem 0;border-bottom:1px solid rgba(214,182,122,.12);font-size:.92rem;letter-spacing:.03em;vertical-align:top;overflow-wrap:break-word;word-break:break-word}
+.sheet td:last-child{text-align:right;font-family:var(--mono);font-size:.9rem;color:var(--gold-hi);white-space:nowrap;padding-left:1rem;width:9.5em}
+@media (max-width:360px){
+  .sheet td:last-child{width:7.5em;white-space:normal}
+  .sheet .pshort{display:none}
+  .sheet .fullidr{margin-top:0;font-size:.92rem;color:var(--gold-hi)}
+  .sheet .total .fullidr{font-size:1.05rem}
+}
+.sheet-close{
+  position:absolute;top:.7rem;right:.7rem;z-index:2;
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  background:none;border:1px solid var(--line);color:var(--mist);
+  font-family:var(--sans);font-size:1rem;line-height:1;cursor:pointer;
+  transition:color .3s,border-color .3s;
+}
+.sheet-close:hover{color:var(--gold-hi);border-color:var(--line-hi)}
+.sheet .total td{border-bottom:none;padding-top:1.2rem;font-family:var(--serif);font-weight:600;font-size:1.05rem}
+.sheet .total td:last-child{font-size:1.45rem}
+.sheet .fullidr{display:block;font-family:var(--mono);font-size:.7rem;color:var(--gold-dim);letter-spacing:0;margin-top:.25rem}
+.fieldgrid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media (max-width:560px){.fieldgrid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.4rem}
+.field label{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;color:var(--mist)}
+.field input,.field select,.field textarea{
+  background:rgba(214,182,122,.05);border:1px solid var(--line);color:var(--ivory);
+  font-family:var(--sans);font-weight:300;font-size:.95rem;letter-spacing:.02em;
+  padding:.8rem .9rem;min-height:46px}
+.field textarea{min-height:70px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:1px solid var(--gold-hi);outline-offset:2px;border-color:var(--line-hi)}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.sheet .fine{font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.9;text-align:center;margin:1.8rem 0}
+.sheet .row{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+.statusmsg{font-family:var(--mono);font-size:.64rem;letter-spacing:.03em;text-transform:uppercase;color:var(--gold);display:none;margin-top:1.1rem;text-align:center}
+.statusmsg.show{display:block}
+.empty-hint{text-align:center;color:var(--mist);font-size:.9rem;line-height:1.9;padding:1rem 0}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){.vinecol{width:100px}}
+@media (max-width:760px){
+  :root{--nav-h:72px}
+  section{padding:4rem 4vw}
+  .panel{padding:2.8rem 1.1rem;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(5,12,9,.9)}
+  .grain{display:none}
+  .piece{grid-template-columns:1fr;gap:1.1rem;padding:2.2rem 1rem}
+  .piece .right{flex-direction:row;align-items:center;justify-content:space-between;width:100%}
+  .piece .flag{left:1rem}
+  .menu-row .row-line{flex-wrap:wrap}
+  .menu-row .dots{display:none}
+  .menu-row .pr{margin-left:auto}
+  .svc{border-right:none;border-bottom:1px solid var(--line)}
+  .svc:last-child{border-bottom:none}
+  .vinecol.r{display:none}
+  .vinecol{width:76px}
+  .vleaf.m-hide{display:none}
+  .silh{width:92vw}
+}
+@media (max-width:420px){
+  .menu-row .row-line{
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-areas:"nm mk" "kind pr";
+    align-items:center;gap:.35rem 1rem;padding:1.1rem 0;
+  }
+  .menu-row .nm{grid-area:nm;font-size:1.15rem;line-height:1.3;white-space:normal}
+  .menu-row .mk{grid-area:mk;transform:none;justify-self:end}
+  .menu-row .kind{grid-area:kind}
+  .menu-row .pr{grid-area:pr;justify-self:end;font-size:1.1rem;margin-left:0}
+  .menu-row .dots{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+  .vleaf{opacity:1}.vleaf .unfurl{transform:none}
+  .art path,.art circle,.art rect,.art line,.art ellipse{stroke-dashoffset:0 !important}
+  /* static arrival: everything at its final state, brief hold, instant dissolve */
+  #intro .tri{stroke-dashoffset:0 !important}
+  #intro .dot,#intro .wordmark,#intro .tagline,#intro .line,#intro .skip{opacity:1 !important;transform:none !important}
+  #intro .wordmark{letter-spacing:.16em !important}
+  #intro .sheen{display:none}
+  html.cine .sun,html.cine .sunglow,html.cine .godray,html.cine .stars,html.cine .fireflies,html.cine .sea-shine,html.cine .isle,html.cine .topnav{opacity:1 !important}
+  html.cine .hero .est,html.cine .hero h1,html.cine .hero .what,html.cine .hero .sub,html.cine .hero .actions,html.cine .hero .scroll{opacity:1 !important;transform:none !important}
+}
+.btn:focus-visible,.piece:focus-visible,.menu-row:focus-visible,.clear-sys:focus-visible,a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="intro" role="presentation">
+  <div class="markwrap">
+    <svg class="mono" viewBox="0 0 40 40" aria-hidden="true">
+      <path class="tri" pathLength="100" d="M20 3 L37 34 H3 Z"/>
+      <circle class="dot" cx="20" cy="14" r="1.9" style="animation-delay:2s"/>
+      <circle class="dot" cx="16" cy="21" r="1.9" style="animation-delay:2.15s"/>
+      <circle class="dot" cx="24" cy="21" r="1.9" style="animation-delay:2.3s"/>
+      <circle class="dot" cx="12" cy="28" r="1.9" style="animation-delay:2.45s"/>
+      <circle class="dot" cx="20" cy="28" r="1.9" style="animation-delay:2.6s"/>
+      <circle class="dot" cx="28" cy="28" r="1.9" style="animation-delay:2.75s"/>
+    </svg>
+    <div class="sheen"></div>
+  </div>
+  <div class="wordmark">UBUNTU <em>SOUND</em></div>
+  <div class="tagline">Sound Atelier · Bali</div>
+  <div class="line">Tuning the room.</div>
+  <button type="button" class="skip" id="skipIntro">Enter</button>
+</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var seen=false;
+  try{ seen=sessionStorage.getItem("us-intro")==="1"; }catch(e){ seen=false; }
+  /* embedded previews (iframes) always play the intro; once-per-session applies only on the live top-level site */
+  var embedded=false;
+  try{ embedded=(window.self!==window.top); }catch(e){ embedded=true; }
+  d.classList.add("cine");
+  if(reduce){ d.classList.add("cine-rm"); }
+  if(seen && !embedded){ d.classList.add("cine-skip","cine-done"); }
+})();
+</script>
+
+<div class="scene" aria-hidden="true">
+  <div class="sky"></div>
+  <div class="stars" id="stars"></div>
+  <div class="godray"></div>
+  <div class="sunglow"></div>
+  <div class="sun"></div>
+  <div class="sea-shine"></div>
+  <div class="isle"></div>
+  <div class="silh l" id="silhL">
+    <svg viewBox="0 0 700 520" role="presentation">
+      <path class="mid" d="M-20 520 L-20 300 C 60 280, 90 300, 120 260 C 90 260, 70 240, 90 210 C 130 230, 160 260, 170 310 C 200 280, 250 280, 280 310 C 240 320, 220 350, 230 390 C 180 370, 120 390, 90 440 C 60 420, 20 430, -20 460 Z"/>
+      <path d="M-20 520 L-20 360 C 40 330, 100 340, 130 300 C 100 296, 80 270, 100 240 C 150 262, 180 300, 185 350 C 230 316, 300 320, 330 360 C 290 368, 268 400, 280 440 C 230 420, 160 436, 120 480 C 80 460, 30 470, -20 500 Z"/>
+      <path d="M40 520 C 60 430, 55 340, 30 250 C 26 236, 40 232, 46 244 C 76 330, 82 430, 66 520 Z"/>
+      <path d="M46 258 C 90 210, 160 190, 230 206 C 170 214, 120 240, 84 284 Z"/>
+      <path d="M46 254 C 20 200, -30 176, -90 180 L -90 200 C -40 196, 4 222, 30 268 Z"/>
+      <path d="M46 250 C 60 190, 110 150, 176 140 C 120 168, 84 210, 70 262 Z"/>
+      <path class="mid" d="M180 520 C 196 460, 194 400, 180 340 C 178 330, 188 328, 192 336 C 210 396, 210 460, 198 520 Z"/>
+      <path class="mid" d="M188 348 C 220 310, 270 296, 320 306 C 276 314, 238 334, 212 368 Z"/>
+      <path class="mid" d="M188 344 C 168 306, 130 288, 84 290 C 124 300, 156 320, 174 356 Z"/>
+    </svg>
+  </div>
+  <div class="silh r" id="silhR">
+    <svg viewBox="0 0 700 520" role="presentation">
+      <path class="mid" d="M-20 520 L-20 300 C 60 280, 90 300, 120 260 C 90 260, 70 240, 90 210 C 130 230, 160 260, 170 310 C 200 280, 250 280, 280 310 C 240 320, 220 350, 230 390 C 180 370, 120 390, 90 440 C 60 420, 20 430, -20 460 Z"/>
+      <path d="M-20 520 L-20 360 C 40 330, 100 340, 130 300 C 100 296, 80 270, 100 240 C 150 262, 180 300, 185 350 C 230 316, 300 320, 330 360 C 290 368, 268 400, 280 440 C 230 420, 160 436, 120 480 C 80 460, 30 470, -20 500 Z"/>
+      <path d="M40 520 C 60 430, 55 340, 30 250 C 26 236, 40 232, 46 244 C 76 330, 82 430, 66 520 Z"/>
+      <path d="M46 258 C 90 210, 160 190, 230 206 C 170 214, 120 240, 84 284 Z"/>
+      <path d="M46 254 C 20 200, -30 176, -90 180 L -90 200 C -40 196, 4 222, 30 268 Z"/>
+      <path d="M46 250 C 60 190, 110 150, 176 140 C 120 168, 84 210, 70 262 Z"/>
+    </svg>
+  </div>
+  <div class="fireflies" id="fireflies"></div>
+  <div class="dusk" id="dusk"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1E4630"/><stop offset=".5" stop-color="#2E5A41"/><stop offset="1" stop-color="#173525"/>
+    </linearGradient>
+    <radialGradient id="leafGrad" cx="35%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#5FA271"/><stop offset=".45" stop-color="#2F6B47"/><stop offset="1" stop-color="#12331F"/>
+    </radialGradient>
+    <radialGradient id="leafGrad2" cx="40%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#7BBB86"/><stop offset=".5" stop-color="#3E7E53"/><stop offset="1" stop-color="#173B25"/>
+    </radialGradient>
+    <g id="leafShape">
+      <path d="M0 0 C -1 -6 -2 -10 -2 -14 C -10 -20 -30 -22 -38 -44 C -44 -62 -36 -84 -18 -92 C -8 -96 -3 -93 0 -88 C 3 -93 8 -96 18 -92 C 36 -84 44 -62 38 -44 C 30 -22 10 -20 2 -14 C 2 -10 1 -6 0 0 Z" fill="url(#leafGrad)" stroke="#0E2A1A" stroke-width="1"/>
+      <path d="M0 -14 L0 -84" stroke="#8CC79A" stroke-width="1" opacity=".65" fill="none"/>
+      <path d="M0 -30 C -10 -36 -20 -44 -26 -56 M0 -30 C 10 -36 20 -44 26 -56 M0 -48 C -8 -54 -16 -62 -20 -72 M0 -48 C 8 -54 16 -62 20 -72 M0 -66 C -5 -72 -10 -78 -12 -84 M0 -66 C 5 -72 10 -78 12 -84" stroke="#8CC79A" stroke-width=".7" opacity=".45" fill="none"/>
+    </g>
+    <g id="leafShape2">
+      <path d="M0 0 C -1 -5 -2 -8 -2 -11 C -8 -16 -24 -18 -30 -36 C -35 -50 -28 -67 -14 -73 C -6 -76 -2 -74 0 -70 C 2 -74 6 -76 14 -73 C 28 -67 35 -50 30 -36 C 24 -18 8 -16 2 -11 C 2 -8 1 -5 0 0 Z" fill="url(#leafGrad2)" stroke="#0E2A1A" stroke-width=".9"/>
+      <path d="M0 -11 L0 -66" stroke="#A6D9B0" stroke-width=".9" opacity=".6" fill="none"/>
+      <path d="M0 -24 C -8 -29 -15 -35 -20 -44 M0 -24 C 8 -29 15 -35 20 -44 M0 -40 C -6 -45 -12 -51 -15 -58 M0 -40 C 6 -45 12 -51 15 -58" stroke="#A6D9B0" stroke-width=".6" opacity=".4" fill="none"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="vinecol l" aria-hidden="true">
+  <svg viewBox="0 0 200 1000" preserveAspectRatio="xMidYMin meet">
+    <path class="vstem core" id="stemL" d="M60 -20 C 40 90, 90 170, 66 280 C 46 372, 100 440, 78 550 C 60 640, 110 710, 88 820 C 72 900, 104 950, 92 1020"/>
+    <path class="vstem hi" id="stemLhi" d="M60 -20 C 40 90, 90 170, 66 280 C 46 372, 100 440, 78 550 C 60 640, 110 710, 88 820 C 72 900, 104 950, 92 1020"/>
+    <path class="vtendril" id="tendL1" d="M70 210 C 108 200, 124 172, 118 142 C 140 156, 146 182, 136 204"/>
+    <g class="vleaf sw" data-t="0.05" transform="translate(52,120) rotate(-118)"><g class="unfurl"><g class="sway"><use href="#leafShape" transform="scale(1.05)"/></g></g></g>
+    <g class="vleaf m-hide" data-t="0.16" transform="translate(76,215) rotate(112)"><g class="unfurl"><g class="sway"><use href="#leafShape2" transform="scale(.9)"/></g></g></g>
+    <g class="vleaf" data-t="0.28" transform="translate(64,330) rotate(-124)"><g class="unfurl"><g class="sway"><use href="#leafShape" transform="scale(1.15)"/></g></g></g>
+    <g class="vleaf m-hide" data-t="0.42" transform="translate(78,460) rotate(110)"><g class="unfurl"><g class="sway"><use href="#leafShape2" transform="scale(.85)"/></g></g></g>
+    <g class="vleaf sw" data-t="0.56" transform="translate(70,590) rotate(-116)"><g class="unfurl"><g class="sway"><use href="#leafShape" transform="scale(1.2)"/></g></g></g>
+    <g class="vleaf" data-t="0.72" transform="translate(94,760) rotate(114)"><g class="unfurl"><g class="sway"><use href="#leafShape2" transform="scale(.95)"/></g></g></g>
+    <g class="vleaf m-hide" data-t="0.87" transform="translate(88,910) rotate(-114)"><g class="unfurl"><g class="sway"><use href="#leafShape" transform="scale(1)"/></g></g></g>
+  </svg>
+</div>
+<div class="vinecol r" aria-hidden="true">
+  <svg viewBox="0 0 200 1000" preserveAspectRatio="xMidYMin meet">
+    <path class="vstem core" id="stemR" d="M140 -20 C 160 100, 106 180, 132 290 C 152 380, 96 450, 120 560 C 138 650, 86 720, 110 830 C 126 908, 94 958, 106 1020"/>
+    <path class="vstem hi" id="stemRhi" d="M140 -20 C 160 100, 106 180, 132 290 C 152 380, 96 450, 120 560 C 138 650, 86 720, 110 830 C 126 908, 94 958, 106 1020"/>
+    <path class="vtendril" id="tendR1" d="M130 330 C 92 322, 76 294, 82 264"/>
+    <g class="vleaf" data-t="0.09" transform="translate(150,150) rotate(116)"><g class="unfurl"><g class="sway"><use href="#leafShape2" transform="scale(.95)"/></g></g></g>
+    <g class="vleaf sw" data-t="0.24" transform="translate(126,290) rotate(-112)"><g class="unfurl"><g class="sway"><use href="#leafShape" transform="scale(1.15)"/></g></g></g>
+    <g class="vleaf" data-t="0.40" transform="translate(116,440) rotate(120)"><g class="unfurl"><g class="sway"><use href="#leafShape2" transform="scale(.9)"/></g></g></g>
+    <g class="vleaf" data-t="0.57" transform="translate(126,600) rotate(-110)"><g class="unfurl"><g class="sway"><use href="#leafShape" transform="scale(1.05)"/></g></g></g>
+    <g class="vleaf" data-t="0.74" transform="translate(112,760) rotate(116)"><g class="unfurl"><g class="sway"><use href="#leafShape2" transform="scale(1)"/></g></g></g>
+    <g class="vleaf" data-t="0.88" transform="translate(112,900) rotate(-118)"><g class="unfurl"><g class="sway"><use href="#leafShape" transform="scale(.95)"/></g></g></g>
+  </svg>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="topnav" aria-label="Main">
+  <a class="monogram" href="#top" aria-label="Ubuntu Sound — back to top">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 3 L37 34 H3 Z" stroke="#D6B67A" stroke-width="1.6"/><circle cx="20" cy="14" r="1.9" fill="#D6B67A"/><circle cx="16" cy="21" r="1.9" fill="#D6B67A"/><circle cx="24" cy="21" r="1.9" fill="#D6B67A"/><circle cx="12" cy="28" r="1.9" fill="#D6B67A"/><circle cx="20" cy="28" r="1.9" fill="#D6B67A"/><circle cx="28" cy="28" r="1.9" fill="#D6B67A"/></svg>
+    <span class="wordlock"><span class="wm-a">UBUNTU</span><span class="wm-b">SOUND</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="#collection">Systems</a>
+    <a href="#gear">Equipment</a>
+    <a href="#service">Service</a>
+    <a class="always" href="#booking">Enquire</a>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="est"><span class="caps">Sound Atelier · Bali</span></div>
+    <h1>The island's<br>finest sound<span class="it">— delivered.</span></h1>
+    <p class="what">Sound-system rental &amp; event production</p>
+    <p class="sub">Void Acoustics systems and Pioneer DJ equipment for villas, clubs, weddings, ceremonies and festivals across Bali — delivered, rigged, tuned and attended by our engineers.</p>
+    <div class="actions">
+      <a class="btn gold" href="#collection">Compose your evening</a>
+      <a class="btn" id="heroWA" href="#" rel="noopener">WhatsApp us directly</a>
+    </div>
+    <div class="scroll" aria-hidden="true"><span class="caps" style="letter-spacing:.3em;font-size:.58rem;color:var(--gold-hi)">Descend</span></div>
+  </header>
+
+  <section id="collection" aria-labelledby="collection-h">
+    <div class="panel">
+      <div class="sec-intro reveal">
+        <span class="caps">CH.01</span>
+        <h2 id="collection-h">Choose Your System</h2>
+        <p class="lead">A complete rig, priced as one. Select the scale that suits your venue and guest count — or skip ahead if you only need individual pieces.</p>
+      </div>
+      <div role="radiogroup" aria-label="Sound systems — choose one" class="collection" id="systemGroup">
+
+        <button type="button" class="piece reveal" role="radio" aria-checked="false" tabindex="0" data-id="stasys">
+          <span class="flag">Signature</span>
+          <span class="numeral" aria-hidden="true">SYS.01</span>
+          <span>
+            <h3>Stasys — The Full Void</h3>
+            <span class="desc">Our headline rig. Void Air Motion horns above twin Stasys X-Air subwoofers — festival-stage presence, scaled to your venue.</span>
+            <span class="manifest"><span>2 Void Air Motion</span><span>2 Stasys X-Air subs</span><span>Bias Q2 &amp; V9 amplification</span><span>Flown brackets</span></span>
+            <span class="fit">Suits · large venues, club nights, festival stages</span>
+          </span>
+          <span class="right">
+            <span class="price">25<small>million IDR · per event</small><span class="full">Rp 25.000.000</span></span>
+            <span class="select-mark" data-mark>Select</span>
+          </span>
+          <span class="engraving"><span><svg class="art" viewBox="0 0 300 170" aria-hidden="true">
+            <circle cx="90" cy="45" r="26"/><circle cx="90" cy="45" r="15"/><circle cx="90" cy="45" r="5"/>
+            <path d="M116 30 C 150 22, 168 30, 176 45 C 168 60, 150 68, 116 60"/>
+            <circle cx="210" cy="45" r="20"/><circle cx="210" cy="45" r="10"/>
+            <rect x="60" y="90" width="180" height="66" rx="3"/>
+            <circle cx="110" cy="123" r="22"/><circle cx="110" cy="123" r="8"/>
+            <circle cx="190" cy="123" r="22"/><circle cx="190" cy="123" r="8"/>
+            <line x1="60" y1="104" x2="240" y2="104"/>
+            <rect class="fillg" x="60" y="90" width="180" height="14"/>
+          </svg><span class="art-caption">Void Air Motion · Stasys X-Air</span></span></span>
+        </button>
+
+        <button type="button" class="piece reveal" role="radio" aria-checked="false" tabindex="-1" data-id="airten">
+          <span class="numeral" aria-hidden="true">SYS.02</span>
+          <span>
+            <h3>Airten — The Club Standard</h3>
+            <span class="desc">Void's signature horns with 3,200 watts of sub. Warm, physical and unmistakable — a proper club sound for serious rooms.</span>
+            <span class="manifest"><span>2 Airten V2 · 2×900W</span><span>2 Void subs · 2×1600W</span><span>Amp V3 + Bias VQ</span><span>Stands &amp; crossover</span></span>
+            <span class="fit">Suits · beach clubs, venue takeovers, large private parties</span>
+          </span>
+          <span class="right">
+            <span class="price">10<small>million IDR · per event</small><span class="full">Rp 10.000.000</span></span>
+            <span class="select-mark" data-mark>Select</span>
+          </span>
+          <span class="engraving"><span><svg class="art" viewBox="0 0 300 170" aria-hidden="true">
+            <circle cx="85" cy="50" r="30"/><circle cx="85" cy="50" r="18"/><circle cx="85" cy="50" r="6"/>
+            <circle cx="150" cy="50" r="30"/><circle cx="150" cy="50" r="18"/><circle cx="150" cy="50" r="6"/>
+            <path d="M112 50 L 123 50"/>
+            <rect x="200" y="30" width="80" height="16" rx="2"/><circle cx="212" cy="38" r="4"/><line x1="224" y1="38" x2="268" y2="38"/>
+            <rect x="200" y="54" width="80" height="16" rx="2"/><circle cx="212" cy="62" r="4"/><line x1="224" y1="62" x2="268" y2="62"/>
+            <rect x="70" y="98" width="160" height="58" rx="3"/>
+            <circle cx="150" cy="127" r="24"/><circle cx="150" cy="127" r="9"/>
+            <circle cx="92" cy="127" r="7"/><circle cx="208" cy="127" r="7"/>
+            <rect class="fillg" x="70" y="98" width="160" height="12"/>
+          </svg><span class="art-caption">Airten V2 · 1600W Subs · Void Amplification</span></span></span>
+        </button>
+
+        <button type="button" class="piece reveal" role="radio" aria-checked="false" tabindex="-1" data-id="active">
+          <span class="numeral" aria-hidden="true">SYS.03</span>
+          <span>
+            <h3>The Villa Session</h3>
+            <span class="desc">A discreet, self-powered arrangement for private dinners, pool days and intimate gatherings. Effortless coverage, no fuss.</span>
+            <span class="manifest"><span>4 active 15″ tops</span><span>2 active 18″ subs</span><span>Stands &amp; surge protection</span></span>
+            <span class="fit">Suits · villas, dinners, ceremonies, intimate events</span>
+          </span>
+          <span class="right">
+            <span class="price">6<small>million IDR · per event</small><span class="full">Rp 6.000.000</span></span>
+            <span class="select-mark" data-mark>Select</span>
+          </span>
+          <span class="engraving"><span><svg class="art" viewBox="0 0 300 170" aria-hidden="true">
+            <path d="M70 20 L110 20 L106 78 L74 78 Z"/><circle cx="90" cy="56" r="14"/><circle cx="90" cy="32" r="6"/>
+            <line x1="90" y1="78" x2="90" y2="140"/><path d="M70 156 L90 140 L110 156"/>
+            <path d="M190 20 L230 20 L226 78 L194 78 Z"/><circle cx="210" cy="56" r="14"/><circle cx="210" cy="32" r="6"/>
+            <line x1="210" y1="78" x2="210" y2="140"/><path d="M190 156 L210 140 L230 156"/>
+            <rect x="126" y="102" width="48" height="54" rx="3"/><circle cx="150" cy="129" r="17"/><circle cx="150" cy="129" r="6"/>
+          </svg><span class="art-caption">Active 15″ Tops · 18″ Subwoofers</span></span></span>
+        </button>
+
+      </div>
+      <div class="clear-row">
+        <button type="button" class="clear-sys" id="clearSys">Clear system</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="gear" aria-labelledby="gear-h">
+    <div class="panel">
+      <div class="sec-intro reveal">
+        <span class="caps">CH.02</span>
+        <h2 id="gear-h">Control &amp; Playback</h2>
+        <p class="lead">Decks, mixers and microphones — rented alongside a system, or entirely on their own. Select as many as your evening calls for.</p>
+      </div>
+      <div class="menu reveal" id="menu"></div>
+    </div>
+  </section>
+
+  <section id="service" aria-labelledby="service-h">
+    <div class="panel">
+      <div class="sec-intro reveal">
+        <span class="caps">CH.03</span>
+        <h2 id="service-h">The Service</h2>
+      </div>
+      <div class="svc-wrap reveal">
+        <div class="svc"><div class="glyph" aria-hidden="true">01</div><b>Two Engineers</b><span>Rig, tune and attend the system from soundcheck until the last record.</span></div>
+        <div class="svc"><div class="glyph" aria-hidden="true">02</div><b>Crew &amp; Staging</b><span>Load-in hands, cabling, stands and stage support, handled quietly.</span></div>
+        <div class="svc"><div class="glyph" aria-hidden="true">03</div><b>Door to Door</b><span>Delivery and collection across Bali, quoted by location, timed to your event window.</span></div>
+      </div>
+      <div class="pricing-note reveal">
+        <div>
+          <h4>Included in equipment prices</h4>
+          <ul>
+            <li>The listed system or item, per event</li>
+            <li>Cabling, stands and accessories listed with each system</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quoted separately, by location</h4>
+          <ul>
+            <li>Engineers &amp; crew</li>
+            <li>Delivery &amp; collection</li>
+            <li>Staging beyond the listed equipment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    OWNER INFORMATION NEEDED (add when verified — do not publish unverified):
+    - Exact service areas within Bali
+    - Confirm "Two Engineers" applies to every package (staffing may vary by system)
+    - Recommended booking lead time / peak-season advice
+    - Power requirements per system; venue access needs
+    - Deposit and cancellation terms; tax treatment for quotes
+    - Venue credits / event credits / testimonials (with permission)
+    - Whether prices are per-day or per-event-window
+    - Typical crew & delivery price ranges, if publishable
+    - Verification for the claim "The island's finest sound"
+  -->
+
+  <section id="booking" aria-labelledby="booking-h">
+    <div class="panel">
+      <div class="sec-intro reveal">
+        <span class="caps">CH.04</span>
+        <h2 id="booking-h">Booking</h2>
+      </div>
+      <div class="booking-steps reveal">
+        <p>To receive a complete quote, send us:</p>
+        <ul>
+          <li>Your event date</li>
+          <li>The venue or Bali area</li>
+          <li>Estimated guest count</li>
+          <li>Setup and event timings</li>
+          <li>Any access or staging considerations</li>
+        </ul>
+        <p>Ubuntu Sound will confirm availability and provide the full quote, including engineers, crew and delivery for your location.</p>
+      </div>
+      <div class="finale reveal">
+        <h3>Tell us where the evening is happening.</h3>
+        <p>Share your date, venue and guest count. We'll recommend the right system and confirm availability.</p>
+        <div class="row">
+          <a class="btn gold" href="#collection">Compose your system</a>
+          <a class="btn" id="directWA" href="#" rel="noopener">Enquire on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="fm">UBUNTU <em>SOUND</em></span>
+    Sound atelier · Bali, Indonesia<br>
+    Void Acoustics · Pioneer DJ · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
+  </footer>
+</main>
+
+<div class="quotebar" id="quotebar">
+  <div>
+    <span class="lbl">Your composition</span>
+    <span class="amt" id="barTotal">—</span>
+  </div>
+  <div class="ct" id="barCount"></div>
+  <button type="button" class="btn gold" id="openQuote"><span class="full">Review &amp; enquire</span><span class="short">Review</span></button>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+  <div class="sheet" id="sheet" tabindex="-1">
+    <button type="button" class="sheet-close" id="sheetClose" aria-label="Close booking request">✕</button>
+    <span class="caps">Ubuntu Sound · Bali</span>
+    <h3 id="modal-title">Your Composition</h3>
+    <p class="estnote" id="modal-desc">Equipment estimate &amp; booking request — not a confirmed invoice.</p>
+
+    <div id="quoteBody"></div>
+
+    <h4>Your details <span style="text-transform:none;letter-spacing:.03em;color:var(--mist)">(optional, helps us respond faster)</span></h4>
+    <div class="fieldgrid">
+      <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+      <div class="field"><label for="f-date">Event date</label><input id="f-date" type="date"></div>
+      <div class="field"><label for="f-area">Venue / area in Bali</label><input id="f-area" type="text" placeholder="e.g. Canggu villa"></div>
+      <div class="field"><label for="f-type">Event type</label>
+        <select id="f-type">
+          <option value="">—</option>
+          <option>Villa party</option>
+          <option>Wedding / ceremony</option>
+          <option>Club night</option>
+          <option>Beach club</option>
+          <option>Brand event</option>
+          <option>Festival</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-guests">Estimated guests</label><input id="f-guests" type="number" min="1" inputmode="numeric"></div>
+      <div class="field" style="grid-column:1/-1"><label for="f-notes">Notes</label><textarea id="f-notes" placeholder="Timings, venue details, anything else"></textarea></div>
+    </div>
+
+    <p class="fine">Engineers, crew, delivery and additional staging are confirmed with your complete quote.</p>
+    <div class="row">
+      <button type="button" class="btn gold" id="sendWA">Send via WhatsApp</button>
+      <button type="button" class="btn util" id="copyQuote">Copy request</button>
+      <button type="button" class="btn" id="closeModal">Return</button>
+    </div>
+    <p class="statusmsg" id="statusMsg" role="status"></p>
+  </div>
+</div>
+
+<div class="visually-hidden" role="status" aria-live="polite" id="live"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- safe storage ---------- */
+function sset(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
+function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
+
+/* ---------- cinematic arrival ---------- */
+(function(){
+  var doc=document.documentElement;
+  var intro=document.getElementById("intro");
+  if(doc.classList.contains("cine-skip")||doc.classList.contains("cine-done")){
+    sset("us-intro","1");
+    if(intro&&intro.parentNode) intro.parentNode.removeChild(intro);
+    return;
+  }
+  var finished=false;
+  document.body.classList.add("locked");
+  function finish(){
+    if(finished) return;
+    finished=true;
+    doc.classList.add("cine-done");
+    document.body.classList.remove("locked");
+    sset("us-intro","1");
+    setTimeout(function(){ if(intro&&intro.parentNode) intro.parentNode.removeChild(intro); },1800);
+  }
+  var hold = doc.classList.contains("cine-rm") ? 600 : 6400;
+  var t=setTimeout(finish, hold);
+  function skip(){ clearTimeout(t); finish(); }
+  var skipBtn=document.getElementById("skipIntro");
+  skipBtn.addEventListener("click", skip);
+  intro.addEventListener("click", function(e){ if(e.target===intro) skip(); });
+  document.addEventListener("keydown", function h(e){
+    if(finished){ document.removeEventListener("keydown",h); return; }
+    if(e.key==="Escape"||e.key==="Enter"){ skip(); return; }
+    if(e.key===" " && document.activeElement===skipBtn){ e.preventDefault(); skip(); }
+  });
+})();
+
+/* ---------- data ---------- */
+var WA_NUMBER="16047633341";
+var SYSTEMS={
+  stasys:{name:"Stasys — The Full Void", price:25000000},
+  airten:{name:"Airten — The Club Standard", price:10000000},
+  active:{name:"The Villa Session", price:6000000}
+};
+var ART={
+  booth:'<svg class="art" viewBox="0 0 300 130" aria-hidden="true"><path d="M60 30 L240 30 L262 110 L38 110 Z"/><line x1="70" y1="50" x2="230" y2="50"/><path d="M110 70 L150 90 L190 70"/><circle cx="150" cy="72" r="8"/><line x1="90" y1="110" x2="80" y2="124"/><line x1="210" y1="110" x2="220" y2="124"/></svg>',
+  cdj:'<svg class="art" viewBox="0 0 300 130" aria-hidden="true"><rect x="30" y="20" width="115" height="95" rx="4"/><circle cx="87" cy="80" r="26"/><circle cx="87" cy="80" r="10"/><rect x="45" y="30" width="85" height="20" rx="2"/><rect x="155" y="20" width="115" height="95" rx="4"/><circle cx="212" cy="80" r="26"/><circle cx="212" cy="80" r="10"/><rect x="170" y="30" width="85" height="20" rx="2"/></svg>',
+  djm:'<svg class="art" viewBox="0 0 300 130" aria-hidden="true"><rect x="80" y="12" width="140" height="106" rx="4"/><line x1="105" y1="40" x2="105" y2="100"/><line x1="135" y1="40" x2="135" y2="100"/><line x1="165" y1="40" x2="165" y2="100"/><line x1="195" y1="40" x2="195" y2="100"/><rect x="99" y="66" width="12" height="8"/><rect x="129" y="58" width="12" height="8"/><rect x="159" y="74" width="12" height="8"/><rect x="189" y="62" width="12" height="8"/><circle cx="105" cy="26" r="5"/><circle cx="135" cy="26" r="5"/><circle cx="165" cy="26" r="5"/><circle cx="195" cy="26" r="5"/></svg>',
+  xdj:'<svg class="art" viewBox="0 0 300 130" aria-hidden="true"><rect x="20" y="20" width="260" height="95" rx="5"/><circle cx="75" cy="72" r="30"/><circle cx="75" cy="72" r="12"/><circle cx="225" cy="72" r="30"/><circle cx="225" cy="72" r="12"/><line x1="130" y1="45" x2="130" y2="100"/><line x1="150" y1="45" x2="150" y2="100"/><line x1="170" y1="45" x2="170" y2="100"/><rect x="124" y="70" width="12" height="7"/><rect x="144" y="58" width="12" height="7"/><rect x="164" y="78" width="12" height="7"/></svg>',
+  rotary:'<svg class="art" viewBox="0 0 300 130" aria-hidden="true"><rect x="55" y="18" width="190" height="98" rx="5"/><circle cx="95" cy="55" r="17"/><line x1="95" y1="42" x2="95" y2="55"/><circle cx="150" cy="55" r="17"/><line x1="150" y1="42" x2="150" y2="55"/><circle cx="205" cy="55" r="17"/><line x1="205" y1="42" x2="205" y2="55"/><circle cx="95" cy="94" r="10"/><circle cx="150" cy="94" r="10"/><circle cx="205" cy="94" r="10"/></svg>',
+  mic:'<svg class="art" viewBox="0 0 300 130" aria-hidden="true"><ellipse cx="150" cy="38" rx="24" ry="22"/><path d="M132 54 L142 118 L158 118 L168 54"/><line x1="138" y1="30" x2="162" y2="30"/><line x1="134" y1="40" x2="166" y2="40"/><line x1="140" y1="78" x2="160" y2="78"/></svg>',
+  yamaha:'<svg class="art" viewBox="0 0 300 130" aria-hidden="true"><rect x="85" y="25" width="130" height="85" rx="6"/><circle cx="110" cy="45" r="7"/><circle cx="140" cy="45" r="7"/><circle cx="110" cy="68" r="7"/><circle cx="140" cy="68" r="7"/><line x1="170" y1="40" x2="170" y2="98"/><line x1="192" y1="40" x2="192" y2="98"/><rect x="164" y="64" width="12" height="8"/><rect x="186" y="52" width="12" height="8"/></svg>'
+};
+var ADDONS=[
+  {id:"booth", kind:"Stage", name:"Illuminated DJ Booth", price:2000000},
+  {id:"cdj", kind:"Players", name:"Pioneer CDJ-3000, pair", price:3000000},
+  {id:"djm", kind:"Mixer", name:"Pioneer DJM-900NXS", price:1500000},
+  {id:"xdj", kind:"All-in-one", name:"Pioneer XDJ-XZ", price:1500000},
+  {id:"rotary", kind:"Rotary", name:"DJR-400 Rotary Mixer", price:2000000},
+  {id:"mic", kind:"Vocal", name:"Shure Wireless Microphone", price:1500000},
+  {id:"yamaha", kind:"Utility", name:"Yamaha MG06X Mixer", price:500000}
+];
+var ADDON_MAP={};
+ADDONS.forEach(function(a){ ADDON_MAP[a.id]=a; });
+
+var chosenSystem=null;
+var chosenAddons=[];
+
+function idrShort(n){ return n>=1000000 ? (n/1000000).toLocaleString("en-US",{maximumFractionDigits:1})+" M IDR" : (n/1000)+" K IDR"; }
+function idrFull(n){ return "Rp " + n.toLocaleString("id-ID"); }
+
+/* ---------- persistence ---------- */
+var FIELD_IDS=["f-name","f-date","f-area","f-type","f-guests","f-notes"];
+function saveState(){
+  var fields={};
+  FIELD_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&el.value) fields[id]=el.value;
+  });
+  sset("us-state", JSON.stringify({sys:chosenSystem, addons:chosenAddons, fields:fields}));
+}
+function loadState(){
+  var raw=sget("us-state");
+  if(!raw) return;
+  var st=null;
+  try{ st=JSON.parse(raw); }catch(e){ return; }
+  if(!st||typeof st!=="object") return;
+  if(typeof st.sys==="string" && SYSTEMS[st.sys]) chosenSystem=st.sys;
+  if(Array.isArray(st.addons)){
+    var seen={};
+    chosenAddons=st.addons.filter(function(id){
+      if(typeof id!=="string" || !ADDON_MAP[id] || seen[id]) return false;
+      seen[id]=true;
+      return true;
+    });
+  }
+  if(st.fields&&typeof st.fields==="object"){
+    var today=(function(){
+      var d=new Date();
+      var m=String(d.getMonth()+1); if(m.length<2) m="0"+m;
+      var day=String(d.getDate()); if(day.length<2) day="0"+day;
+      return d.getFullYear()+"-"+m+"-"+day;
+    })();
+    FIELD_IDS.forEach(function(id){
+      var el=document.getElementById(id);
+      var v=st.fields[id];
+      if(!el || typeof v!=="string") return;
+      if(id==="f-guests" && (isNaN(+v) || +v<1)) return;
+      if(id==="f-date" && (!/^\d{4}-\d{2}-\d{2}$/.test(v) || v<today)) return;
+      el.value=v;
+    });
+  }
+}
+
+/* ---------- scene ---------- */
+var isMobile=window.matchMedia("(max-width:760px)").matches;
+var stars=document.getElementById("stars");
+var nStars=isMobile?20:32;
+for(var i=0;i<nStars;i++){
+  var s=document.createElement("i");
+  s.style.left=(Math.random()*100)+"%";
+  s.style.top=(Math.random()*40)+"%";
+  s.style.animationDelay=(Math.random()*5)+"s";
+  s.style.opacity=(Math.random()*.45+.1).toFixed(2);
+  stars.appendChild(s);
+}
+var ffc=document.getElementById("fireflies");
+var nFF=isMobile?5:8;
+for(var j=0;j<nFF;j++){
+  var f=document.createElement("i");
+  f.style.left=(Math.random()*100)+"%";
+  f.style.top=(55+Math.random()*40)+"%";
+  f.style.setProperty("--d",(9+Math.random()*7)+"s");
+  f.style.setProperty("--dx",(Math.random()*70-35)+"px");
+  f.style.setProperty("--dy",(-24-Math.random()*50)+"px");
+  f.style.animationDelay=(Math.random()*5)+"s, "+(Math.random()*4)+"s";
+  ffc.appendChild(f);
+}
+
+/* ---------- vines / parallax / dusk ---------- */
+function prepPath(id){
+  var el=document.getElementById(id);
+  if(!el||!el.getTotalLength) return null;
+  var len=el.getTotalLength();
+  el.style.strokeDasharray=len;
+  el.style.strokeDashoffset=len;
+  return {el:el,len:len};
+}
+var stems=["stemL","stemLhi","stemR","stemRhi"].map(prepPath).filter(Boolean);
+var tendrils=["tendL1","tendR1"].map(prepPath).filter(Boolean);
+tendrils.forEach(function(t,k){ t.t=.18+k*.16; });
+var leaves=Array.prototype.slice.call(document.querySelectorAll(".vleaf"));
+var dusk=document.getElementById("dusk");
+var silhL=document.getElementById("silhL"), silhR=document.getElementById("silhR");
+var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+var ticking=false;
+function onScroll(){
+  if(ticking) return;
+  ticking=true;
+  requestAnimationFrame(function(){
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    var p=max>0?Math.min(1,window.scrollY/max):0;
+    if(!reduceMotion){
+      var growth=Math.min(1,p*1.25+0.03);
+      for(var a=0;a<stems.length;a++) stems[a].el.style.strokeDashoffset=stems[a].len*(1-growth);
+      for(var b=0;b<tendrils.length;b++){
+        var tp=Math.max(0,Math.min(1,(growth-tendrils[b].t)/.18));
+        tendrils[b].el.style.strokeDashoffset=tendrils[b].len*(1-tp);
+      }
+      for(var c=0;c<leaves.length;c++){
+        leaves[c].classList.toggle("open", growth>=parseFloat(leaves[c].dataset.t));
+      }
+      if(!isMobile){
+        var py=window.scrollY*.04;
+        silhL.style.transform="translateY("+py+"px)";
+        silhR.style.transform="scaleX(-1) translateY("+(py*.75)+"px)";
+      }
+    }
+    dusk.style.setProperty("--dusk",(Math.min(.8,p*1.1)).toFixed(3));
+    ticking=false;
+  });
+}
+window.addEventListener("scroll", onScroll, {passive:true});
+onScroll();
+
+/* ---------- build add-on menu ---------- */
+var menu=document.getElementById("menu");
+ADDONS.forEach(function(a){
+  var b=document.createElement("button");
+  b.type="button";
+  b.className="menu-row";
+  b.setAttribute("aria-pressed","false");
+  b.dataset.id=a.id;
+  b.innerHTML=
+    '<span class="row-line"><span class="nm">'+a.name+'</span><span class="kind">'+a.kind+'</span><span class="dots"></span><span class="pr">'+idrShort(a.price)+'</span><span class="mk" aria-hidden="true">\u2713</span></span>'+
+    '<span class="engraving"><span>'+ART[a.id]+'<span class="art-caption">'+a.name+'</span></span></span>';
+  menu.appendChild(b);
+});
+
+/* ---------- announcements ---------- */
+var live=document.getElementById("live");
+function announce(msg){ live.textContent=""; setTimeout(function(){ live.textContent=msg; },50); }
+
+/* ---------- systems: proper radio behaviour ---------- */
+var systemGroup=document.getElementById("systemGroup");
+var radios=Array.prototype.slice.call(systemGroup.querySelectorAll(".piece"));
+var clearBtn=document.getElementById("clearSys");
+
+function syncSystems(){
+  radios.forEach(function(b,i){
+    var on=b.dataset.id===chosenSystem;
+    b.setAttribute("aria-checked", on?"true":"false");
+    var m=b.querySelector("[data-mark]");
+    if(m) m.textContent=on?"Selected":"Select";
+    /* roving tabindex: selected gets 0; if none selected, first gets 0 */
+    var tab=chosenSystem ? (on?0:-1) : (i===0?0:-1);
+    b.setAttribute("tabindex", String(tab));
+  });
+  clearBtn.classList.toggle("show", !!chosenSystem);
+}
+function selectSystem(id, focusIt){
+  if(chosenSystem===id) return; /* re-click does nothing */
+  chosenSystem=id;
+  syncSystems();
+  announce(SYSTEMS[id].name+" selected as your system.");
+  refresh(); saveState();
+  if(focusIt){
+    var el=radios.filter(function(b){ return b.dataset.id===id; })[0];
+    if(el) el.focus();
+  }
+}
+systemGroup.addEventListener("click", function(e){
+  var btn=e.target.closest(".piece");
+  if(!btn) return;
+  selectSystem(btn.dataset.id, false);
+});
+systemGroup.addEventListener("keydown", function(e){
+  var keys=["ArrowRight","ArrowDown","ArrowLeft","ArrowUp","Home","End"];
+  if(keys.indexOf(e.key)===-1) return;
+  var cur=radios.findIndex(function(b){ return b.dataset.id===chosenSystem; });
+  if(cur===-1) cur=radios.indexOf(document.activeElement);
+  if(cur===-1) cur=0;
+  var next=cur;
+  if(e.key==="ArrowRight"||e.key==="ArrowDown") next=(cur+1)%radios.length;
+  else if(e.key==="ArrowLeft"||e.key==="ArrowUp") next=(cur-1+radios.length)%radios.length;
+  else if(e.key==="Home") next=0;
+  else if(e.key==="End") next=radios.length-1;
+  e.preventDefault();
+  selectSystem(radios[next].dataset.id, true);
+});
+clearBtn.addEventListener("click", function(){
+  if(!chosenSystem) return;
+  var name=SYSTEMS[chosenSystem].name;
+  chosenSystem=null;
+  syncSystems();
+  announce(name+" removed. Additions kept.");
+  refresh(); saveState();
+});
+
+/* ---------- add-ons: multi-select ---------- */
+function syncAddons(){
+  Array.prototype.forEach.call(menu.querySelectorAll(".menu-row"), function(b){
+    b.setAttribute("aria-pressed", chosenAddons.indexOf(b.dataset.id)>-1 ? "true":"false");
+  });
+}
+menu.addEventListener("click", function(e){
+  var btn=e.target.closest(".menu-row");
+  if(!btn) return;
+  var id=btn.dataset.id;
+  var ix=chosenAddons.indexOf(id);
+  if(ix>-1){
+    chosenAddons.splice(ix,1);
+    btn.setAttribute("aria-pressed","false");
+    announce(ADDON_MAP[id].name+" removed.");
+  }else{
+    chosenAddons.push(id);
+    btn.setAttribute("aria-pressed","true");
+    announce(ADDON_MAP[id].name+" added.");
+  }
+  refresh(); saveState();
+});
+
+/* ---------- totals / quote bar ---------- */
+var bar=document.getElementById("quotebar");
+function total(){
+  var t=chosenSystem?SYSTEMS[chosenSystem].price:0;
+  chosenAddons.forEach(function(id){ t+=ADDON_MAP[id].price; });
+  return t;
+}
+function count(){ return (chosenSystem?1:0)+chosenAddons.length; }
+function refresh(){
+  var c=count();
+  document.getElementById("barTotal").textContent = c? idrShort(total()) : "\u2014";
+  var parts=[];
+  if(chosenSystem) parts.push(SYSTEMS[chosenSystem].name.split(" \u2014 ")[0]);
+  if(chosenAddons.length) parts.push(chosenAddons.length+(chosenAddons.length===1?" addition":" additions"));
+  document.getElementById("barCount").textContent=parts.join(" · ");
+  bar.classList.toggle("on", c>0);
+  document.body.classList.toggle("has-quote", c>0);
+}
+
+/* ---------- background isolation while modal open ---------- */
+var isolated=[];
+function setInert(on){
+  var targets=[document.querySelector("main"),document.querySelector(".topnav"),bar];
+  targets.forEach(function(el){
+    if(!el) return;
+    try{
+      if("inert" in el){ el.inert=on; }
+      else{
+        if(on){ el.setAttribute("aria-hidden","true"); }
+        else{ el.removeAttribute("aria-hidden"); }
+      }
+      if(on){ isolated.push(el); }
+    }catch(e){}
+  });
+  if(!on) isolated=[];
+}
+
+/* ---------- modal ---------- */
+var modal=document.getElementById("modal");
+var sheet=document.getElementById("sheet");
+var openBtn=document.getElementById("openQuote");
+var lastFocus=null;
+
+function buildQuoteBody(){
+  function priceCell(n){ return '<span class="pshort">'+idrShort(n)+'</span><span class="fullidr">'+idrFull(n)+'</span>'; }
+  var html="";
+  if(chosenSystem){
+    var s=SYSTEMS[chosenSystem];
+    html+='<h4>Your system</h4><table><tr><td>'+s.name+'</td><td>'+priceCell(s.price)+'</td></tr></table>';
+  }
+  if(chosenAddons.length){
+    html+='<h4>'+(chosenSystem?'Additions':'Your equipment')+'</h4><table>';
+    chosenAddons.forEach(function(id){
+      var a=ADDON_MAP[id];
+      html+='<tr><td>'+a.name+'</td><td>'+priceCell(a.price)+'</td></tr>';
+    });
+    html+='</table>';
+  }
+  if(chosenSystem||chosenAddons.length){
+    html+='<table><tr class="total"><td>Equipment estimate</td><td>'+priceCell(total())+'</td></tr></table>';
+  }else{
+    html+='<p class="empty-hint">Nothing selected yet. Choose a system or additions, or send us a direct message below.</p>';
+  }
+  document.getElementById("quoteBody").innerHTML=html;
+}
+
+function openModal(){
+  lastFocus=document.activeElement;
+  buildQuoteBody();
+  setStatus("");
+  modal.classList.add("open");
+  document.body.classList.add("locked");
+  setInert(true);
+  sheet.focus();
+}
+function closeModal(){
+  modal.classList.remove("open");
+  document.body.classList.remove("locked");
+  setInert(false);
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+openBtn.addEventListener("click", openModal);
+document.getElementById("closeModal").addEventListener("click", closeModal);
+document.getElementById("sheetClose").addEventListener("click", closeModal);
+modal.addEventListener("mousedown", function(e){ if(e.target===modal) closeModal(); });
+document.addEventListener("keydown", function(e){
+  if(!modal.classList.contains("open")) return;
+  if(e.key==="Escape"){ e.preventDefault(); closeModal(); return; }
+  if(e.key==="Tab"){
+    var focusables=sheet.querySelectorAll('button,input,select,textarea,a[href]');
+    if(!focusables.length) return;
+    var first=focusables[0], last=focusables[focusables.length-1];
+    var active=document.activeElement;
+    if(e.shiftKey && (active===first||active===sheet)){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && active===last){ e.preventDefault(); first.focus(); }
+  }
+});
+
+/* ---------- message ---------- */
+/* ---------- date & validation helpers ---------- */
+var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function todayISO(){
+  var d=new Date();
+  var m=String(d.getMonth()+1); if(m.length<2) m="0"+m;
+  var day=String(d.getDate()); if(day.length<2) day="0"+day;
+  return d.getFullYear()+"-"+m+"-"+day;
+}
+function formatEventDate(iso){
+  /* parse the string directly — no Date() round-trip, no timezone shift */
+  var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if(!m) return iso;
+  var mi=parseInt(m[2],10), di=parseInt(m[3],10);
+  if(mi<1||mi>12||di<1||di>31) return iso;
+  return di+" "+MONTHS[mi-1]+" "+m[1];
+}
+var dateEl=document.getElementById("f-date");
+if(dateEl){
+  dateEl.min=todayISO();
+  dateEl.addEventListener("change", function(){
+    if(dateEl.value && dateEl.value<todayISO()){
+      setStatus("Please choose an upcoming date");
+    }
+  });
+}
+var guestsEl=document.getElementById("f-guests");
+if(guestsEl){
+  guestsEl.addEventListener("change", function(){
+    var v=guestsEl.value.trim();
+    if(v!=="" && (isNaN(+v) || +v<1)){
+      guestsEl.value="1";
+      setStatus("Guest count set to the minimum of 1");
+      saveState();
+    }
+  });
+}
+
+function val(id){ var el=document.getElementById(id); return el?el.value.trim():""; }
+function quoteText(){
+  var lines=["UBUNTU SOUND \u2014 Booking Request",""];
+  var name=val("f-name"), date=val("f-date"), area=val("f-area"),
+      type=val("f-type"), guests=val("f-guests"), notes=val("f-notes");
+  if(name) lines.push("Name: "+name);
+  if(date) lines.push("Event date: "+formatEventDate(date));
+  if(area) lines.push("Venue / area: "+area);
+  if(type) lines.push("Event type: "+type);
+  if(guests) lines.push("Estimated guests: "+guests);
+  if(name||date||area||type||guests) lines.push("");
+  if(chosenSystem){
+    var s=SYSTEMS[chosenSystem];
+    lines.push("System: "+s.name+" \u2014 "+idrFull(s.price));
+  }
+  if(chosenAddons.length){
+    lines.push(chosenSystem?"Additions:":"Equipment:");
+    chosenAddons.forEach(function(id){
+      var a=ADDON_MAP[id];
+      lines.push("\u2022 "+a.name+" \u2014 "+idrFull(a.price));
+    });
+  }
+  if(chosenSystem||chosenAddons.length){
+    lines.push("Equipment estimate: "+idrFull(total()));
+  }else{
+    lines.push("General enquiry \u2014 no equipment selected yet.");
+  }
+  if(notes){ lines.push(""); lines.push("Notes: "+notes); }
+  lines.push("");
+  lines.push("I understand engineers, crew, delivery and additional staging are confirmed with the complete quote.");
+  return lines.join("\n");
+}
+
+var statusEl=document.getElementById("statusMsg");
+function setStatus(msg){
+  statusEl.textContent=msg;
+  statusEl.classList.toggle("show", !!msg);
+}
+function copyFallback(text){
+  var ta=document.createElement("textarea");
+  ta.value=text;
+  ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  var ok=false;
+  try{ ok=document.execCommand("copy"); }catch(e){ ok=false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+document.getElementById("copyQuote").addEventListener("click", function(){
+  var text=quoteText();
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(
+      function(){ setStatus("Copied \u2014 paste it anywhere"); },
+      function(){ setStatus(copyFallback(text)?"Copied \u2014 paste it anywhere":"Copy failed \u2014 long-press to select text"); }
+    );
+  }else{
+    setStatus(copyFallback(text)?"Copied \u2014 paste it anywhere":"Copy failed \u2014 long-press to select text");
+  }
+});
+function waURL(text){ return "https://wa.me/"+WA_NUMBER+(text?"?text="+encodeURIComponent(text):""); }
+document.getElementById("sendWA").addEventListener("click", function(){
+  var url=waURL(quoteText());
+  var w=null;
+  try{ w=window.open(url,"_blank","noopener"); }catch(e){}
+  if(!w){ window.location.href=url; }
+});
+var directText="Hi Ubuntu Sound \u2014 I'd like to ask about sound for an event in Bali.";
+["heroWA","directWA","footWA"].forEach(function(id){
+  var a=document.getElementById(id);
+  if(a) a.href=waURL(directText);
+});
+
+/* ---------- field persistence ---------- */
+FIELD_IDS.forEach(function(id){
+  var el=document.getElementById(id);
+  if(el){
+    el.addEventListener("input", saveState);
+    el.addEventListener("change", saveState);
+  }
+});
+
+/* ---------- reveal ---------- */
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }});
+  },{threshold:.12});
+  Array.prototype.forEach.call(document.querySelectorAll(".reveal"),function(el){ io.observe(el); });
+}else{
+  Array.prototype.forEach.call(document.querySelectorAll(".reveal"),function(el){ el.classList.add("in"); });
+}
+
+/* ---------- restore & init ---------- */
+loadState();
+syncSystems();
+syncAddons();
+refresh();
+})();
+</script>
+</body>
+</html>
