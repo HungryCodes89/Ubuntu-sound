@@ -40,6 +40,7 @@ body.locked{overflow:hidden}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ============ CINEMATIC ARRIVAL ============ */
+html.cine-wait #intro *{animation-play-state:paused !important}
 #intro{
   position:fixed;inset:0;z-index:200;
   background:#030605;
@@ -474,12 +475,15 @@ footer a{color:var(--gold);text-decoration:none}
   var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var seen=false;
   try{ seen=sessionStorage.getItem("us-intro")==="1"; }catch(e){ seen=false; }
-  /* embedded previews (iframes) always play the intro; once-per-session applies only on the live top-level site */
+  /* embedded previews (iframes) always play; ?intro forces a replay for demos */
   var embedded=false;
   try{ embedded=(window.self!==window.top); }catch(e){ embedded=true; }
+  var force=/[?&]intro\b/.test(location.search);
   d.classList.add("cine");
   if(reduce){ d.classList.add("cine-rm"); }
-  if(seen && !embedded){ d.classList.add("cine-skip","cine-done"); }
+  if(seen && !embedded && !force){ d.classList.add("cine-skip","cine-done"); }
+  /* if the tab opens in the background, hold the ceremony until it's actually watched */
+  if(document.hidden && !d.classList.contains("cine-skip")){ d.classList.add("cine-wait"); }
 })();
 </script>
 
@@ -854,8 +858,22 @@ function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null;
     setTimeout(function(){ if(intro&&intro.parentNode) intro.parentNode.removeChild(intro); },1800);
   }
   var hold = doc.classList.contains("cine-rm") ? 600 : 6400;
-  var t=setTimeout(finish, hold);
-  function skip(){ clearTimeout(t); finish(); }
+  var t=null;
+  function begin(){
+    if(t!==null||finished) return;
+    doc.classList.remove("cine-wait");
+    t=setTimeout(finish, hold);
+  }
+  if(doc.classList.contains("cine-wait")){
+    document.addEventListener("visibilitychange", function v(){
+      if(!document.hidden){ document.removeEventListener("visibilitychange",v); begin(); }
+    });
+    /* safety: never wait forever */
+    setTimeout(begin, 30000);
+  }else{
+    begin();
+  }
+  function skip(){ if(t!==null) clearTimeout(t); finish(); }
   var skipBtn=document.getElementById("skipIntro");
   skipBtn.addEventListener("click", skip);
   intro.addEventListener("click", function(e){ if(e.target===intro) skip(); });
