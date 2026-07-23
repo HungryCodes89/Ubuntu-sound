@@ -220,8 +220,7 @@ main{position:relative;z-index:2}
 .hero .sub{margin-top:1.6rem;max-width:56ch;font-size:1rem;font-weight:300;letter-spacing:.04em;
   color:var(--ivory);line-height:2;text-shadow:0 1px 14px rgba(5,9,8,.95)}
 .hero .actions{margin-top:3rem;display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center}
-.hero .scroll{position:absolute;bottom:calc(2rem + var(--safe-b));left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.hero .scroll{margin-top:3.5rem;display:flex;flex-direction:column;align-items:center;gap:.7rem}
 .hero .scroll::after{content:"";width:1px;height:46px;background:linear-gradient(180deg,var(--gold-hi),transparent)}
 
 section{padding:5.5rem 8vw;position:relative;scroll-margin-top:var(--nav-h)}
@@ -1346,6 +1345,21 @@ FIELD_IDS.forEach(function(id){
     el.addEventListener("input", saveState);
     el.addEventListener("change", saveState);
   }
+});
+
+/* ---------- reliable in-page anchors (iOS Safari) ---------- */
+document.addEventListener("click", function(e){
+  var a=e.target.closest('a[href^="#"]');
+  if(!a) return;
+  var hash=a.getAttribute("href");
+  if(!hash||hash==="#") return;
+  var target=document.querySelector(hash);
+  if(!target) return;
+  e.preventDefault();
+  var smooth=!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  try{ target.scrollIntoView({behavior:smooth?"smooth":"auto",block:"start"}); }
+  catch(err){ target.scrollIntoView(); }
+  try{ history.replaceState(null,"",hash); }catch(err){}
 });
 
 /* ---------- reveal ---------- */
