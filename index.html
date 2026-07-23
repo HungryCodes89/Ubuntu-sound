@@ -761,7 +761,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
         <p class="lead">Birds of Paradise — a Bali celebration built on deep, soulful and Afro-house sound.</p>
       </div>
       <div class="field-rec reveal">
-        <video id="fieldVideo" muted loop playsinline preload="none"
+        <video id="fieldVideo" muted loop playsinline preload="metadata"
           poster="https://cdn.prod.website-files.com/64958d5d414cdc94f6df791f/64d8a5441a596721ff616468_Video%20(1)-poster-00001.jpg">
           <source src="https://cdn.prod.website-files.com/64958d5d414cdc94f6df791f/64d8a5441a596721ff616468_Video%20(1)-transcode.mp4" type="video/mp4">
         </video>
@@ -817,7 +817,7 @@ html.cine-force.cine-done #intro{opacity:0 !important;visibility:hidden !importa
   <footer>
     <span class="fm">UBUNTU <em>SOUND</em></span>
     Sound atelier · Bali, Indonesia<br>
-    Void Acoustics · Pioneer DJ · V.11 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
+    Void Acoustics · Pioneer DJ · V.12 · <a id="footWA" href="#" rel="noopener">WhatsApp +1 (604) 763-3341</a>
   </footer>
 </main>
 
@@ -1395,11 +1395,20 @@ FIELD_IDS.forEach(function(id){
 (function(){
   var v=document.getElementById("fieldVideo");
   if(!v) return;
+  function tryPlay(){
+    v.muted=true; /* belt and suspenders for iOS */
+    var pr=v.play();
+    if(pr&&pr.catch) pr.catch(function(){ v.setAttribute("controls",""); });
+  }
+  /* tap anywhere on the frame starts it, regardless of autoplay policy */
+  v.parentNode.addEventListener("click", function(){
+    if(v.paused){ tryPlay(); } else { v.pause(); }
+  });
   if(reduceMotion){ v.setAttribute("controls",""); return; }
   if("IntersectionObserver" in window){
     var vio=new IntersectionObserver(function(es){
       es.forEach(function(en){
-        if(en.isIntersecting){ var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){ v.setAttribute("controls",""); }); }
+        if(en.isIntersecting){ tryPlay(); }
         else{ v.pause(); }
       });
     },{threshold:.35});
